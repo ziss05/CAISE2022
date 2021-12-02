@@ -15,6 +15,7 @@ Input: XML-files validating against schema provided under src\main\resources\TCP
   - examples can be found here: src\main\resources\Examples\*
 
 Run:
+  - BEFORE: create src\main\resources\Output directory!
   - after placing input files run src\main\java\CalculateOverallTCMap.java
   
 Output: 
