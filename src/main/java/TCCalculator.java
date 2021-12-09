@@ -66,7 +66,8 @@ public class TCCalculator {
             return null;
         }
         HashSet<BigDecimal> set= new HashSet<>();
-        for (Quadruple q : t.getTCMap()
+        TreeSet<Quadruple> tSet=t.getTCMap();
+        for (Quadruple q : tSet
         ) {
             if (q.getD1().doubleValue() <= d.doubleValue() && d.doubleValue() < q.getD2().doubleValue()) {
                 if (q.getGradient()==null){return null;}
@@ -81,7 +82,8 @@ public class TCCalculator {
             return null;
         }
         HashSet<BigDecimal> set= new HashSet<>();
-        for (Quadruple q : t.getTCMap()
+        TreeSet<Quadruple> tSet=t.getTCMap();
+        for (Quadruple q : tSet
         ) {
             if (q.getD1().doubleValue() <d.doubleValue() && d.doubleValue() <= q.getD2().doubleValue()) {
                 if (q.getGradient()==null){return null;}
@@ -96,7 +98,8 @@ public class TCCalculator {
             return null;
         }
         HashSet<BigDecimal> set= new HashSet<>();
-        for (Quadruple q : t.getTCMap()
+        TreeSet<Quadruple> tSet=t.getTCMap();
+        for (Quadruple q : tSet
         ) {
             if (q.getD1().doubleValue() <= d.doubleValue() && d.doubleValue() < q.getD2().doubleValue()) {
                 if (q.getGradient()==null){return null;}
@@ -111,7 +114,8 @@ public class TCCalculator {
             return null;
         }
         HashSet<BigDecimal> set= new HashSet<>();
-        for (Quadruple q : t.getTCMap()
+        TreeSet<Quadruple> tSet=t.getTCMap();
+        for (Quadruple q : tSet
         ) {
             if (q.getD1().doubleValue() <d.doubleValue() && d.doubleValue() <= q.getD2().doubleValue()) {
                 if (q.getGradient()==null){return null;}
@@ -214,8 +218,10 @@ public class TCCalculator {
             return null;
         }
         TCMap result = new TCMap();
-        for (Quadruple qa : a.getTCMap()) {
-            for (Quadruple qb : b.getTCMap()) {
+        TreeSet<Quadruple> aSet=a.getTCMap();
+        TreeSet<Quadruple> bSet=b.getTCMap();
+        for (Quadruple qa : aSet) {
+            for (Quadruple qb : bSet) {
                 result.addAll(concat(qa, qb));
             }
         }
@@ -276,7 +282,8 @@ public class TCCalculator {
         TreeSet<BigDecimal> points = getCombinedPointSet(a, b);
         TCMap map = new TCMap();
         map.addAll(b.getTCMap());
-        for (Object o : calcIntersectionPoints(map)) {
+        TreeSet<BigDecimal> intersects=(TreeSet<BigDecimal>) calcIntersectionPoints(map);
+        for (Object o : intersects) {
             if (o instanceof BigDecimal && ((BigDecimal) o).compareTo(BigDecimal.ZERO) != 0&& ((BigDecimal) o).compareTo(BigDecimal.ZERO) !=-1) {
                 points.add((BigDecimal) o);
             }
@@ -310,10 +317,11 @@ public class TCCalculator {
             return null;
         }
         TreeSet<BigDecimal> intersects = new TreeSet<>();
+        TreeSet<Quadruple> aSet=a.getTCMap();
 
-        for (Quadruple qa : a.getTCMap()) {
+        for (Quadruple qa : aSet) {
             if (qa.getC1() != null) {
-                for (Quadruple qb : a.getTCMap()) {
+                for (Quadruple qb : aSet) {
                     if (qb.getC1() != null) {
                         if (qa.getD1().doubleValue()<=qb.getD1().doubleValue() && qb.getD1().doubleValue()< qa.getD2().doubleValue()) {
                             if (qa.getGradient().doubleValue() != qb.getGradient().doubleValue()) {
@@ -341,7 +349,8 @@ public class TCCalculator {
             return null;
         }
         TreeSet<BigDecimal> set=new TreeSet<>(map.getPointSet());
-        for (BigDecimal d: calcIntersectionPoints(map)
+        TreeSet<BigDecimal> intersects=(TreeSet<BigDecimal>) calcIntersectionPoints(map);
+        for (BigDecimal d: intersects
              ) {
             set.add(d);
         }
