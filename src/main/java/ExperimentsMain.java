@@ -9,7 +9,7 @@ import java.io.*;
 public class ExperimentsMain {
     static final int NUMTESTRUNS=100;
     public static void main(String[] args) {
-        StringBuilder pathData = new StringBuilder("src/main/resources/ExampleInputs");
+        StringBuilder pathData = new StringBuilder("src/main/resources/Examples");
 
         File file = new File(pathData.toString());
         String[] directories = file.list(new FilenameFilter() {
